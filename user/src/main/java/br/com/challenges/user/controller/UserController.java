@@ -1,6 +1,6 @@
 package br.com.challenges.user.controller;
 
-import br.com.challenges.user.dto.UserDto;
+import br.com.challenges.user.application.dto.UserDto;
 import br.com.challenges.user.infra.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

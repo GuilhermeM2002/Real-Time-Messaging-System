@@ -1,4 +1,4 @@
-package br.com.challenges.user.dto;
+package br.com.challenges.user.application.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

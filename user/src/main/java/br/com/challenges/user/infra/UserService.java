@@ -1,7 +1,7 @@
 package br.com.challenges.user.infra;
 
 import br.com.challenges.user.core.domain.User;
-import br.com.challenges.user.dto.UserDto;
+import br.com.challenges.user.application.dto.UserDto;
 import br.com.challenges.user.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
