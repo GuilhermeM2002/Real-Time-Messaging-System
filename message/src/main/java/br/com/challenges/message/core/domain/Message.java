@@ -17,8 +17,8 @@ import java.time.OffsetDateTime;
 public class Message {
     @Id
     private  Long id;
-    private String howSend;
-    private String howReceive;
+    private String whoSend;
+    private String whoReceive;
     private String content;
     private OffsetDateTime date;
 }

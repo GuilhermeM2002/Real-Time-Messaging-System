@@ -13,7 +13,8 @@ import java.time.OffsetDateTime;
 @Setter
 public class MessageDto {
     private  Long id;
-    private String how;
+    private String whoSend;
+    private String whoReceive;
     private String content;
     private OffsetDateTime date;
 }

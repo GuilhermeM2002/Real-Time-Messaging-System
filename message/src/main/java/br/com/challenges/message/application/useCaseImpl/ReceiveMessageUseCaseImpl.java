@@ -3,23 +3,26 @@ package br.com.challenges.message.application.useCaseImpl;
 import br.com.challenges.message.application.dto.MessageDto;
 import br.com.challenges.message.core.useCases.ReceiveMessageUseCase;
 import br.com.challenges.message.http.UserClient;
+import br.com.challenges.message.repository.MessageRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.kafka.annotation.KafkaListener;
+
+import java.util.List;
 
 public class ReceiveMessageUseCaseImpl implements ReceiveMessageUseCase {
     @Autowired
     private UserClient userClient;
-
+    @Autowired
+    private MessageRepository repository;
+    @Autowired
+    private ModelMapper mapper;
     @Override
-    @KafkaListener(topics = "message-sent", groupId = "group")
-    public ResponseEntity<String> messageReceived(MessageDto dto) {
-        var user = userClient.getUser(dto.getHow());
+    public List<MessageDto> messageReceived(String userName) {
+        var user = userClient.getUser(userName);
         if (user == null){
-            return new ResponseEntity<>("User invalid", HttpStatus.BAD_REQUEST);
+            throw new RuntimeException("Invalid user name.");
         }
-        String responseMessage = "New message received " + dto.getHow() + " " + dto.getContent();
-        return new ResponseEntity<>(responseMessage, HttpStatus.OK);
+        var messages = repository.findByWhoReceive(userName);
+        return messages.stream().map(message -> mapper.map(message, MessageDto.class)).toList();
     }
 }
