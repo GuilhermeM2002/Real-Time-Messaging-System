@@ -19,4 +19,9 @@ public class UserService{
 
         return  mapper.map(user, UserDto.class);
     }
+    public UserDto findUserByUserName(String userName){
+        var user = repository.FindByUserName(userName);
+
+        return mapper.map(user, UserDto.class);
+    }
 }
