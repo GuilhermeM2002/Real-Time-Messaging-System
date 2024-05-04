@@ -1,6 +1,16 @@
 version: '3'
 
 services:
+  consul:
+    image: consul:1.9.7
+    container_name: consul
+    ports:
+      - "8500:8500"  # UI
+      - "8600:8600/udp"  # DNS
+      - "8400:8400"  # RPC
+      - "8301:8301"  # Serf LAN
+      - "8302:8302"  # Serf WAN
+    command: "agent -dev -client=0.0.0.0"
   mongodb:
     image: mongo
     container_name: mongodb
@@ -39,6 +49,8 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT, EXTERNAL_SAME_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+volumes:
+  mongodb_data:
 networks:
-  onlineStore:
+  challenge-1:
     driver: bridge
