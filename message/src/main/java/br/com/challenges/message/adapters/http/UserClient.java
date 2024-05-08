@@ -1,4 +1,4 @@
-package br.com.challenges.message.http;
+package br.com.challenges.message.adapters.http;
 
 import br.com.challenges.message.application.dto.UserDto;
 import org.springframework.cloud.openfeign.FeignClient;

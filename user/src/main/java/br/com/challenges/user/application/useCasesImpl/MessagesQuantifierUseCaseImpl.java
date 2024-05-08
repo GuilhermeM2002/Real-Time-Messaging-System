@@ -14,7 +14,7 @@ public class MessagesQuantifierUseCaseImpl implements MessagesQuantifierUseCase 
     @Override
     @KafkaListener(topics = "message-sent", groupId = "group")
     public void messagesQuantifier(MessageDto dto, String myUserName) {
-        var user = repository.FindByUserName(dto.getWhoReceive());
+        var user = repository.findByUserName(dto.getWhoReceive());
         if(Objects.equals(user.getUserName(), myUserName)){
             var newQuantity = user.getQuantityOfMessages() + 1;
             user.setQuantityOfMessages(newQuantity);

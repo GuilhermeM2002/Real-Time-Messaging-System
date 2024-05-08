@@ -20,7 +20,7 @@ public class UserService{
         return  mapper.map(user, UserDto.class);
     }
     public UserDto findUserByUserName(String userName){
-        var user = repository.FindByUserName(userName);
+        var user = repository.findByUserName(userName);
 
         return mapper.map(user, UserDto.class);
     }
