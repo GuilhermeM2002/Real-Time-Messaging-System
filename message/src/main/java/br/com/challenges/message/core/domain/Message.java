@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.OffsetDateTime;
+import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,9 +18,9 @@ import java.time.OffsetDateTime;
 @Document(collection = "message")
 public class Message {
     @Id
-    private  Long id;
+    private ObjectId id;
     private String whoSend;
     private String whoReceive;
     private String content;
-    private OffsetDateTime date;
+    private Date date;
 }
