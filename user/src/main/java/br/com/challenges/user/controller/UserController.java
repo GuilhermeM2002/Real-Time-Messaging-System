@@ -19,8 +19,8 @@ public class UserController {
 
         return ResponseEntity.created(uri).body(user);
     }
-    @GetMapping("/{userName}")
-    public ResponseEntity<UserDto> findUser(@PathVariable String userName){
+    @GetMapping
+    public ResponseEntity<UserDto> findUser(@RequestParam String userName){
         var user = service.findUserByUserName(userName);
 
         return ResponseEntity.ok(user);
