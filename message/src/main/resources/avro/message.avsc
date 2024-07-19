@@ -1,0 +1,30 @@
+{
+  "namespace": "br.com.challenges.message.avro",
+  "type": "record",
+  "name": "MessageAvro",
+  "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "whoSend",
+      "type": "string"
+    },
+    {
+      "name": "whoReceive",
+      "type": "string"
+    },
+    {
+      "name": "content",
+      "type": "string"
+    },
+    {
+      "name": "date",
+      "type": {
+        "type": "int",
+        "logicalType": "date"
+      }
+    }
+  ]
+}
