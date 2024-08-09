@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.ZoneId;
 
 @Service
@@ -34,7 +33,7 @@ public class SendMessageUseCaseImpl implements SendMassageUseCase {
         messageAvro.setWhoSend(message.getWhoSend());
         messageAvro.setWhoReceive(message.getWhoReceive());
 
-        kafkaTemplate.send("message-sent", messageAvro);
+        kafkaTemplate.send("message-sent", messageAvro.getWhoSend().toString(), messageAvro);
 
         return messageDto;
     }

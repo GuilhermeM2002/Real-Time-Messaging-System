@@ -1,7 +1,9 @@
 package br.com.challenges.user.core.useCases;
 
-import br.com.challenges.user.application.dto.MessageDto;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.apache.avro.generic.GenericData;
+import org.apache.avro.generic.GenericRecord;
 
 public interface MessagesQuantifierUseCase {
-    void messagesQuantifier(MessageDto dto, String myUserName);
+    void messagesQuantifier(GenericRecord dto) throws JsonProcessingException;
 }

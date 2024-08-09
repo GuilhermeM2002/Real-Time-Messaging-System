@@ -11,8 +11,8 @@ import java.time.OffsetDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-public class MessageDto {
-    private  Long id;
+public class ReceivedMessageDto {
+    private  String id;
     private String whoSend;
     private String whoReceive;
     private String content;
