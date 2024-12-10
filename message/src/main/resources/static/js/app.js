@@ -1,11 +1,11 @@
 const stompClient = new StompJs.Client({
-    brokerURL: 'ws://' + window.location.host + '/websocket'
+    brokerURL: 'ws://localhost:8080/websocket'
 });
 
 stompClient.onConnect = (frame) => {
     setConnected(true);
     console.log('Connected: ' + frame);
-    stompClient.subscribe('/topics/livechat', (message) => {
+    stompClient.subscribe('/topic/livechat', (message) => {
         updateLiveChat(JSON.parse(message.body).content);
     });
 };
@@ -58,3 +58,4 @@ $(function () {
     $( "#disconnect" ).click(() => disconnect());
     $( "#send" ).click(() => sendMessage());
 });
+
