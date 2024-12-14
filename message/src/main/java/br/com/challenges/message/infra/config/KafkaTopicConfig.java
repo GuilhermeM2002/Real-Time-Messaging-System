@@ -26,4 +26,9 @@ public class KafkaTopicConfig {
     public NewTopic messageSentTopic() {
         return new NewTopic("message-sent", 1, (short) 1);
     }
+
+    @Bean
+    public NewTopic messageGroupSentTopic() {
+        return new NewTopic("message-group-sent", 1, (short) 1);
+    }
 }
