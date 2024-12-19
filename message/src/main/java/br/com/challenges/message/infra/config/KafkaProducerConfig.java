@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import java.util.HashMap;
 
@@ -52,7 +53,7 @@ public class KafkaProducerConfig {
         props.put("schema.registry.url", "http://localhost:8081");
         props.put(
                 ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
-                KafkaAvroSerializer.class);
+                JsonSerializer.class);
 
         return new DefaultKafkaProducerFactory<>(props);
     }

@@ -23,7 +23,7 @@ public class ChatRoomService {
         return mapper.map(room, ChatRoomDto.class);
     }
 
-    public ChatRoomDto addUserToRoom(Long id, String userName){
+    public void addUserToRoom(Long id, String userName){
         var chatRoom = chatRoomRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Room not found"));
         var user = userClient.getUser(userName);
@@ -31,8 +31,6 @@ public class ChatRoomService {
             throw new RuntimeException("User not found");
         }
         chatRoom.getUsers().add(userName);
-        var chatRoomNewUser = chatRoomRepository.save(chatRoom);
-
-        return mapper.map(chatRoomNewUser, ChatRoomDto.class);
+        chatRoomRepository.save(chatRoom);
     }
 }
