@@ -43,7 +43,7 @@ function disconnect() {
 function sendMessage() {
     stompClient.publish({
         destination: "/app/new-message",
-        body: JSON.stringify({'user': $("#user").val(), 'message': $("#message").val()})
+        body: JSON.stringify({'user': $("#user").val(), 'message': $("#message").val(), 'roomId': $("#room").val()})
     });
     $("#message").val("");
 }
