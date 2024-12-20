@@ -4,6 +4,6 @@ import br.com.challenges.message.application.dto.MessageDto;
 
 import java.util.List;
 
-public interface ReceiveMessageUseCase {
-    public List<MessageDto> messageReceived(String userName);
+public interface MessageHistoryUseCase {
+    public List<MessageDto> getMessageHistory(String senderUserName, String recipientUserName);
 }

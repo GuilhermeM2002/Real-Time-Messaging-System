@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @Builder
 @Document(collection = "message")
-public class Message {
+public class MessagePrivate {
     @Id
     private ObjectId id;
     private String whoSend;

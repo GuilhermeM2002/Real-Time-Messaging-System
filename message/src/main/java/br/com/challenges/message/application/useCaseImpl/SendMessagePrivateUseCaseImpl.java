@@ -2,9 +2,9 @@ package br.com.challenges.message.application.useCaseImpl;
 
 import br.com.challenges.message.application.dto.MessageDto;
 import br.com.challenges.message.avro.MessageAvro;
-import br.com.challenges.message.core.domain.Message;
-import br.com.challenges.message.core.useCases.SendMassageUseCase;
-import br.com.challenges.message.adapters.repository.MessageRepository;
+import br.com.challenges.message.core.domain.MessagePrivate;
+import br.com.challenges.message.core.useCases.SendMassagePrivateUseCase;
+import br.com.challenges.message.adapters.repository.MessagePrivateRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -13,16 +13,16 @@ import org.springframework.stereotype.Service;
 import java.time.ZoneId;
 
 @Service
-public class SendMessageUseCaseImpl implements SendMassageUseCase {
+public class SendMessagePrivateUseCaseImpl implements SendMassagePrivateUseCase {
     @Autowired
-    private MessageRepository repository;
+    private MessagePrivateRepository repository;
     @Autowired
     private ModelMapper mapper;
     @Autowired
     private KafkaTemplate<String, MessageAvro> kafkaTemplate;
     @Override
     public MessageDto sendMessage(MessageDto dto) {
-        var message = mapper.map(dto, Message.class);
+        var message = mapper.map(dto, MessagePrivate.class);
         repository.save(message);
         var messageDto = mapper.map(message, MessageDto.class);
 
