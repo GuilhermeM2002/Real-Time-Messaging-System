@@ -1,34 +1,35 @@
-# Message Exchange System
+# Real-Time Messaging System
 
-Este repositório contém um sistema distribuído de troca de mensagens desenvolvido com **Java**, **Spring Boot**, **MongoDB**, **Kafka**, **Consul**, **Docker**, **Kong** e **OpenFeign**. O sistema utiliza uma arquitetura baseada em microsserviços para processamento e entrega de mensagens, com foco em escalabilidade e eficiência.
+Um sistema de troca de mensagens em tempo real com suporte a WebSocket, Kafka e gerenciamento de salas de chat.
+
+## Funcionalidades Principais
+
+1. **Troca de Mensagens em Tempo Real**
+   - Envio e recebimento instantâneo de mensagens entre usuários conectados via WebSocket.
+   - Suporte a:
+     - Mensagens privadas (um-para-um).
+     - Mensagens em grupo (um-para-muitos).
+
+2. **Conexão WebSocket**
+   - Estabelecimento de conexões WebSocket para comunicação bidirecional em tempo real.
+
+3. **Publicação e Consumo com Kafka**
+   - Publicação de mensagens recebidas pelo WebSocket em um tópico Kafka.
+
+4. **Gerenciamento de Salas**
+   - Criação e gerenciamento de salas de chat (grupos de usuários).
+   - Associação de mensagens a uma sala específica.
+
+5. **Histórico de Mensagens**
+   - Armazenamento de mensagens em um banco de dados para recuperação posterior.
 
 ---
 
-## **Funcionalidades Principais**
+## Tecnologias Utilizadas
 
-- **Troca de Mensagens:** Processamento e entrega de mensagens entre diferentes serviços.
-- **Persistência de Dados:** Armazenamento das mensagens e seus metadados em um banco de dados MongoDB.
-- **Comunicação Assíncrona:** Integração com Apache Kafka para troca de mensagens entre microsserviços.
-- **Service Discovery:** Uso do Consul para registro e descoberta de serviços.
-- **API Gateway:** Kong como gateway para gerenciar chamadas de API.
-- **Chamadas HTTP:** OpenFeign para comunicação eficiente entre microsserviços.
-- **Docker:** Contêinerização dos serviços para simplificar a implantação.
-
----
-
-## **Tecnologias Utilizadas**
-
-### **Backend**
-- **Java 17**
-- **Spring Boot 3.x**
-  - Spring Web
-  - Spring Data MongoDB
-  - Spring Cloud (Consul, OpenFeign)
-  - Spring Kafka
-
-### **Infraestrutura**
-- **MongoDB:** Banco de dados NoSQL para persistência.
-- **Apache Kafka:** Plataforma de streaming para troca de mensagens.
-- **Consul:** Registro e descoberta de serviços.
-- **Kong:** API Gateway para gerenciamento de endpoints.
-- **Docker:** Contêineres para todos os serviços.
+- **Spring Boot**: Framework principal para o backend.
+- **Spring WebSocket**: Para comunicação bidirecional em tempo real.
+- **Apache Kafka**: Para publicação e consumo assíncrono de mensagens.
+- **Spring Data MongoDB**: Para integração com o MongoDB.
+- **MongoDB**: Banco de dados NoSQL para armazenamento de mensagens.
+- **Docker**: Gerenciamento de contêineres para facilitar o desenvolvimento e a implantação.
