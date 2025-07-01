@@ -1,35 +1,35 @@
 # Real-Time Messaging System
 
-Um sistema de troca de mensagens em tempo real com suporte a WebSocket, Kafka e gerenciamento de salas de chat.
+A real-time messaging system with support for WebSocket, Kafka, and chat room management.
 
-## Funcionalidades Principais
+## Main Features
 
-1. **Troca de Mensagens em Tempo Real**
-   - Envio e recebimento instantâneo de mensagens entre usuários conectados via WebSocket.
-   - Suporte a:
-     - Mensagens privadas (um-para-um).
-     - Mensagens em grupo (um-para-muitos).
+1. **Real-Time Messaging**
+   - Instant sending and receiving of messages between users connected via WebSocket.
+   - Supports:
+     - Private messages (one-to-one).
+     - Group messages (one-to-many).
 
-2. **Conexão WebSocket**
-   - Estabelecimento de conexões WebSocket para comunicação bidirecional em tempo real.
+2. **WebSocket Connection**
+   - Establishment of WebSocket connections for real-time bidirectional communication.
 
-3. **Publicação e Consumo com Kafka**
-   - Publicação de mensagens recebidas pelo WebSocket em um tópico Kafka.
+3. **Kafka Publishing and Consumption**
+   - Publishing messages received via WebSocket to a Kafka topic.
 
-4. **Gerenciamento de Salas**
-   - Criação e gerenciamento de salas de chat (grupos de usuários).
-   - Associação de mensagens a uma sala específica.
+4. **Room Management**
+   - Creation and management of chat rooms (user groups).
+   - Association of messages with a specific room.
 
-5. **Histórico de Mensagens**
-   - Armazenamento de mensagens em um banco de dados para recuperação posterior.
+5. **Message History**
+   - Storage of messages in a database for later retrieval.
 
 ---
 
-## Tecnologias Utilizadas
+## Technologies Used
 
-- **Spring Boot**: Framework principal para o backend.
-- **Spring WebSocket**: Para comunicação bidirecional em tempo real.
-- **Apache Kafka**: Para publicação e consumo assíncrono de mensagens.
-- **Spring Data MongoDB**: Para integração com o MongoDB.
-- **MongoDB**: Banco de dados NoSQL para armazenamento de mensagens.
-- **Docker**: Gerenciamento de contêineres para facilitar o desenvolvimento e a implantação.
+- **Spring Boot**: Main backend framework.
+- **Spring WebSocket**: For real-time bidirectional communication.
+- **Apache Kafka**: For asynchronous message publishing and consumption.
+- **Spring Data MongoDB**: For MongoDB integration.
+- **MongoDB**: NoSQL database for message storage.
+- **Docker**: Container management to facilitate development and deployment.
