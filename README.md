@@ -1,34 +1,35 @@
-# Message Exchange System
+# Real-Time Messaging System
 
-Este repositório contém um sistema distribuído de troca de mensagens desenvolvido com **Java**, **Spring Boot**, **MongoDB**, **Kafka**, **Consul**, **Docker**, **Kong** e **OpenFeign**. O sistema utiliza uma arquitetura baseada em microsserviços para processamento e entrega de mensagens, com foco em escalabilidade e eficiência.
+A real-time messaging system with support for WebSocket, Kafka, and chat room management.
+
+## Main Features
+
+1. **Real-Time Messaging**
+   - Instant sending and receiving of messages between users connected via WebSocket.
+   - Supports:
+     - Private messages (one-to-one).
+     - Group messages (one-to-many).
+
+2. **WebSocket Connection**
+   - Establishment of WebSocket connections for real-time bidirectional communication.
+
+3. **Kafka Publishing and Consumption**
+   - Publishing messages received via WebSocket to a Kafka topic.
+
+4. **Room Management**
+   - Creation and management of chat rooms (user groups).
+   - Association of messages with a specific room.
+
+5. **Message History**
+   - Storage of messages in a database for later retrieval.
 
 ---
 
-## **Funcionalidades Principais**
+## Technologies Used
 
-- **Troca de Mensagens:** Processamento e entrega de mensagens entre diferentes serviços.
-- **Persistência de Dados:** Armazenamento das mensagens e seus metadados em um banco de dados MongoDB.
-- **Comunicação Assíncrona:** Integração com Apache Kafka para troca de mensagens entre microsserviços.
-- **Service Discovery:** Uso do Consul para registro e descoberta de serviços.
-- **API Gateway:** Kong como gateway para gerenciar chamadas de API.
-- **Chamadas HTTP:** OpenFeign para comunicação eficiente entre microsserviços.
-- **Docker:** Contêinerização dos serviços para simplificar a implantação.
-
----
-
-## **Tecnologias Utilizadas**
-
-### **Backend**
-- **Java 17**
-- **Spring Boot 3.x**
-  - Spring Web
-  - Spring Data MongoDB
-  - Spring Cloud (Consul, OpenFeign)
-  - Spring Kafka
-
-### **Infraestrutura**
-- **MongoDB:** Banco de dados NoSQL para persistência.
-- **Apache Kafka:** Plataforma de streaming para troca de mensagens.
-- **Consul:** Registro e descoberta de serviços.
-- **Kong:** API Gateway para gerenciamento de endpoints.
-- **Docker:** Contêineres para todos os serviços.
+- **Spring Boot**: Main backend framework.
+- **Spring WebSocket**: For real-time bidirectional communication.
+- **Apache Kafka**: For asynchronous message publishing and consumption.
+- **Spring Data MongoDB**: For MongoDB integration.
+- **MongoDB**: NoSQL database for message storage.
+- **Docker**: Container management to facilitate development and deployment.
