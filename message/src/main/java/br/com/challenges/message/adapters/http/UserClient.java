@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "user", url = "http://localhost:8093/user")
 public interface UserClient {
     @RequestMapping(method = RequestMethod.GET)
-    UserDto getUser(@RequestParam String userName);
+    UserDto getUser(@RequestParam("userName") String userName);
 }
