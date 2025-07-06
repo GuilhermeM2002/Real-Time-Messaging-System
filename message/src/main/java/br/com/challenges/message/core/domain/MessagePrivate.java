@@ -15,7 +15,7 @@ import java.util.Date;
 @Document(collection = "message")
 public class MessagePrivate {
     @Id
-    private ObjectId id;
+    private Long id;
     private String whoSend;
     private String whoReceive;
     private String content;
