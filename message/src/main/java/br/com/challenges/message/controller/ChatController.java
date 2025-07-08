@@ -3,6 +3,7 @@ package br.com.challenges.message.controller;
 import br.com.challenges.message.adapters.repository.MessageGroupRepository;
 import br.com.challenges.message.application.dto.ChatInput;
 import br.com.challenges.message.application.dto.ChatOutput;
+import br.com.challenges.message.avro.GroupMessageAvro;
 import br.com.challenges.message.service.ChatRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -15,7 +16,7 @@ import org.springframework.web.util.HtmlUtils;
 @Controller
 public class ChatController {
     @Autowired
-    private KafkaTemplate<String, ChatInput> kafkaTemplate;
+    private KafkaTemplate<String, GroupMessageAvro> kafkaTemplate;
     @Autowired
     private ChatRoomService chatRoomService;
     @Autowired
@@ -29,8 +30,12 @@ public class ChatController {
         }
 
         chatRoomService.addUserToRoom(dto.roomId(), dto.user());
-        messageGroupRepository.save(dto);
-        kafkaTemplate.send("message-group-sent", dto);
+
+        GroupMessageAvro groupMessage = new GroupMessageAvro();
+        groupMessage.setRoomId(dto.roomId());
+        groupMessage.setMessage(dto.message());
+        groupMessage.setUser(dto.user());
+        kafkaTemplate.send("message-group-sent", groupMessage);
 
         return  new ChatOutput(HtmlUtils.htmlEscape(dto.user() + ": " + dto.message()));
     }

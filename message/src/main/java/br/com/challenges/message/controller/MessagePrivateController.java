@@ -2,7 +2,7 @@ package br.com.challenges.message.controller;
 
 import br.com.challenges.message.adapters.repository.MessagePrivateRepository;
 import br.com.challenges.message.application.dto.MessageDto;
-import br.com.challenges.message.avro.MessageAvro;
+import br.com.challenges.message.avro.PrivateMessageAvro;
 import br.com.challenges.message.core.domain.MessagePrivate;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +19,16 @@ public class MessagePrivateController {
     @Autowired
     private MessagePrivateRepository messagePrivateRepository;
     @Autowired
-    private KafkaTemplate<String, MessageAvro> kafkaTemplate;
+    private KafkaTemplate<String, PrivateMessageAvro> kafkaTemplate;
     @Autowired
-    private ModelMapper mapper;
+    private ModelMapper mapper; 
 
     @MessageMapping("private-message")
     @SendTo("/topic/private-chat")
     public MessageDto sendPrivateMessage(@Payload MessageDto dto) {
         var message = mapper.map(dto, MessagePrivate.class);
 
-        var messageAvro = new MessageAvro();
+        var messageAvro = new PrivateMessageAvro();
         messageAvro.setContent(message.getContent());
         messageAvro.setDate(message.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         messageAvro.setId(message.getId().toString());
