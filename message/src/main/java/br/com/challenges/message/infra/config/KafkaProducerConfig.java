@@ -1,7 +1,8 @@
 package br.com.challenges.message.infra.config;
 
 import br.com.challenges.message.application.dto.ChatInput;
-import br.com.challenges.message.avro.MessageAvro;
+import br.com.challenges.message.avro.GroupMessageAvro;
+import br.com.challenges.message.avro.PrivateMessageAvro;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -21,7 +22,7 @@ public class KafkaProducerConfig {
     private String bootstrapAddress;
 
     @Bean
-    public ProducerFactory<String, MessageAvro> producerFactory(){
+    public ProducerFactory<String, PrivateMessageAvro> producerFactory(){
         var props = new HashMap<String, Object>();
         props.put(
                 ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
@@ -37,12 +38,12 @@ public class KafkaProducerConfig {
         return new DefaultKafkaProducerFactory<>(props);
     }
     @Bean
-    public KafkaTemplate<String, MessageAvro> kafkaTemplate(){
+    public KafkaTemplate<String, PrivateMessageAvro> kafkaTemplate(){
         return new KafkaTemplate<>(producerFactory());
     }
 
     @Bean
-    public ProducerFactory<String, ChatInput> producerFactoryChat(){
+    public ProducerFactory<String, GroupMessageAvro> producerFactoryChat(){
         var props = new HashMap<String, Object>();
         props.put(
                 ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
@@ -58,7 +59,7 @@ public class KafkaProducerConfig {
         return new DefaultKafkaProducerFactory<>(props);
     }
     @Bean
-    public KafkaTemplate<String, ChatInput> kafkaTemplateChat(){
+    public KafkaTemplate<String, GroupMessageAvro> kafkaTemplateChat(){
         return new KafkaTemplate<>(producerFactoryChat());
     }
 

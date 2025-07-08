@@ -1,7 +1,7 @@
 {
   "namespace": "br.com.challenges.message.avro",
   "type": "record",
-  "name": "MessageAvro",
+  "name": "PrivateMessageAvro",
   "fields": [
     {
       "name": "id",
